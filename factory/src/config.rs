@@ -156,6 +156,7 @@ unsafe impl HeapsConfigure for BasicHeapsConfigure {
         properties: &rendy_core::hal::adapter::MemoryProperties,
     ) -> (Self::Types, Self::Heaps) {
         let _1mb = 1024 * 1024;
+        let _16mb = 16 * _1mb;
         let _32mb = 32 * _1mb;
         let _128mb = 128 * _1mb;
 
@@ -169,7 +170,7 @@ unsafe impl HeapsConfigure for BasicHeapsConfigure {
                         .contains(rendy_core::hal::memory::Properties::CPU_VISIBLE)
                     {
                         Some(LinearConfig {
-                            linear_size: min(_128mb, properties.memory_heaps[mt.heap_index] / 16),
+                            linear_size: min(_16mb, properties.memory_heaps[mt.heap_index] / 16),
                         })
                     } else {
                         None

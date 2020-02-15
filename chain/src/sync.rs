@@ -418,17 +418,17 @@ where
                     .pick()
                     .insert(id, Barrier::new(prev_link.state()..link.state()));
 
-                if !link.access().exclusive() {
-                    unimplemented!("This case is unimplemented");
-                }
+                //if !link.access().exclusive() {
+                //    unimplemented!("This case is unimplemented");
+                //}
             }
         } else {
             let signal_sid = latest(prev_link, schedule);
             let wait_sid = earliest(link, schedule);
 
-            if !prev_link.access().exclusive() {
-                unimplemented!("This case is unimplemented");
-            }
+            //if !prev_link.access().exclusive() {
+            //    unimplemented!("This case is unimplemented");
+            //}
 
             // Generate a semaphore between the signal and wait sides of the transfer.
             generate_semaphore_pair(sync, uid, link, signal_sid..wait_sid);
@@ -451,9 +451,9 @@ where
                 ),
             );
 
-            if !link.access().exclusive() {
-                unimplemented!("This case is unimplemented");
-            }
+            //if !link.access().exclusive() {
+            //    unimplemented!("This case is unimplemented");
+            //}
         }
     }
 }

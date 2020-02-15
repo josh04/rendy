@@ -380,7 +380,7 @@ where
             ImageAccess {
                 access: rendy_core::hal::image::Access::TRANSFER_READ,
                 layout: rendy_core::hal::image::Layout::TransferSrcOptimal,
-                usage: rendy_core::hal::image::Usage::TRANSFER_SRC,
+                usage: rendy_core::hal::image::Usage::TRANSFER_SRC | rendy_core::hal::image::Usage::TRANSFER_DST,
                 stages: rendy_core::hal::pso::PipelineStage::TRANSFER,
             },
         )]
@@ -426,7 +426,7 @@ where
                 extent,
                 self.image_count,
                 self.present_mode,
-                rendy_core::hal::image::Usage::TRANSFER_DST,
+                rendy_core::hal::image::Usage::empty(),
             )
             .map_err(NodeBuildError::Swapchain)?;
 
